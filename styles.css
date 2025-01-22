@@ -1,0 +1,396 @@
+:root {
+  --orange: hsl(26, 100%, 55%);
+  --pale-orange: hsl(25, 100%, 94%);
+  --very-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(223, 64%, 98%);
+  --black75: hsla(0, 0%, 0%, 75%);
+  --white: white;
+  font-size: 16px;
+  font-family: "Kumbh Sans", serif;
+}
+body {
+  background-color: var(--white);
+  color: var(--dark-grayish-blue);
+}
+h1 {
+  color: var(--very-dark-blue);
+  font-size: 1.75rem;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+button {
+  all: unset;
+  border-radius: 100%;
+  background-color: var(--white);
+  box-shadow: none;
+  display: block;
+  border: 0 none;
+  cursor: pointer;
+  outline: none;
+  size: 100%;
+  display: flex;
+}
+/* button:hover,
+button:active,
+button:focus {
+  all: unset;
+} */
+
+.top-bar {
+  display: grid;
+  grid-template-columns: MIN-CONTENT 1fr 40px 40px;
+  grid-template-areas: "nav logo basket-button avatar";
+  width: 100%;
+  height: 30px;
+
+  gap: 1rem;
+  min-width: 100vw;
+  padding: 0 1rem; /* Replace margin with padding */
+  box-sizing: border-box; /* Include padding in width */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+header * {
+  height: 20px;
+}
+
+.nav {
+  grid-area: nav;
+  position: relative;
+  order: 1;
+  height: auto;
+}
+
+.logo {
+  grid-area: logo;
+  order: 2;
+}
+.basket-button {
+  grid-area: basket-button;
+  display: flex;
+  justify-content: end;
+  order: 3;
+}
+.avatar {
+  grid-area: avatar;
+  order: 4;
+  justify-content: end;
+}
+
+.nav-menu {
+  /* display: none; */
+  display: flex;
+  flex-direction:column;
+  position: fixed;
+  background-color: var(--white);
+  
+  padding: none;
+  margin: none !important;
+  z-index: 999;
+  left: 0;
+  top:0;
+  height: 100%;
+  font-size: 1em;
+  font-weight: 700;
+  gap: 1rem;
+}
+.nav-menu ul{
+  display: flex;
+  flex-direction:column;
+  gap:1em;
+  padding:1rem 2rem;
+  margin: 0 0.5rem;
+  list-style: none;
+  height: 1rem !important;
+}
+.nav-menu li {
+  margin: 0 0.5rem;
+  height: 1rem !important;
+}
+.nav-menu li:hover{
+  color: var(--orange);
+  /* background-color: var(--orange); */
+}
+.product-image {
+  width: 100%;
+}
+
+.product-images {
+  position: relative;
+  height: 100%;
+}
+.productImageButton {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid white 0.75rem;
+}
+
+.productImageButton img {
+  width: 0.75rem;
+  height: 0.75rem;
+  align-self: center;
+  justify-self: center;
+}
+
+#image-previous {
+  left: 1rem;
+}
+#image-next {
+  right: 1rem;
+}
+.product-text {
+  padding: 2rem;
+}
+.product-vendor {
+  color: var(--dark-grayish-blue);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1rem;
+}
+
+.product-description-body {
+  color: var(--dark-grayish-blue);
+  line-height: 1.5rem;
+}
+/** Price Section **/
+
+.price-container {
+  display: inline-grid;
+  width: 100%;
+  justify-content: space-between;
+  grid-template-areas: "price discount rr-price";
+  grid-template-columns: min-content min-content 1fr;
+  gap: 1rem;
+  height: 2.2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+.price {
+  grid-area: price;
+  color: var(--very-dark-blue);
+  font-size: 1.75rem;
+
+  height: 2rem;
+}
+.discount {
+  grid-area: discount;
+  background-color: var(--very-dark-blue);
+  color: var(--white);
+  align-self: center;
+  border-radius: 15%;
+  padding: 0.2rem 0.5rem;
+}
+.rr-price {
+  grid-area: rr-price;
+  align-self: center;
+  justify-self: right;
+  text-decoration: line-through;
+  font-weight: 700;
+}
+
+/** order control section **/
+.order-controls {
+  color: var(--very-dark-blue);
+  font-weight: 700;
+}
+.order-controls-amounts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color:var(--light-grayish-blue);
+  border-radius: 0.5rem;
+  height: 3rem;
+  width:100%;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.order-controls-button {
+  background-color: transparent;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 2em;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  flex-grow: 1;
+  box-sizing: border-box;
+  line-height: 0;
+  display: flexbox;
+  align-items: center;
+    /* border: solid 1px red; */
+}
+.order-controls-button img {
+  width: 0.75rem;
+  height: auto;
+}
+#order-controls-plus {
+  justify-content: end;
+}
+#order-controls-addtoCart{
+  background-color: var(--orange);
+  border-radius: 0.2rem;
+  width:100%;
+  padding: 0.5rem;
+  display:flex;
+  justify-content: center;
+  gap:1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+#order-controls-addtoCart img{
+  height: 1rem;
+}
+@media (max-width: 935px) and (min-width: 500px) {
+  .top-bar {
+    grid-template-columns: 40px 1fr 40px 40px;
+    grid-template-areas: "nav logo basket-button avatar";
+    width: 100%;
+    height: 60px;
+
+    gap: 1rem;
+    width: 100%; /* Full width */
+    padding: 0 1rem; /* Replace margin with padding */
+  }
+  header * {
+    height: 40px;
+  }
+
+  .nav {
+    grid-area: nav;
+    order: 1;
+    height: auto;
+  }
+
+  .logo {
+    grid-area: logo;
+    order: 2;
+    height: 40px;
+  }
+  .basket-button {
+    grid-area: basket-button;
+    display: flex;
+    justify-content: end;
+    order: 3;
+  }
+  .avatar {
+    grid-area: avatar;
+    order: 4;
+    justify-content: end;
+  }
+
+  /* .nav-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    list-style: none;
+    padding: none;
+    margin: none !important;
+  } */
+  .nav-menu li {
+    margin: 0 0.5rem;
+    height: 1rem !important;
+  }
+
+  .avatar {
+    height: 40px;
+    width: auto;
+  }
+
+  .product-image {
+    width: 100%;
+  }
+
+  .product-images {
+    position: relative;
+    height: 100%;
+  }
+  .productImageButton {
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .productImageButton img {
+    width: 50%;
+    height: 50%;
+  }
+
+  #image-previous {
+    left: 1rem;
+  }
+  #image-next {
+    right: 1rem;
+  }
+  .product-text {
+    padding: 2rem;
+  }
+  .product-vendor {
+    color: var(--dark-grayish-blue);
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+
+  .product-description-body {
+    color: var(--dark-grayish-blue);
+  }
+}
+
+@media (min-width: 936px) {
+  :root {
+    font-size: 24px;
+  }
+  .top-bar {
+    width: 100vw;
+    display: inline-grid;
+    grid-template-columns: min-content auto 40px 40px;
+    grid-template-areas: "logo nav basket-button avatar";
+    gap: clamp(0vw, 2vw, 4vw);
+    height: 60px;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+
+    order: 2;
+  }
+  .logo {
+    order: 1;
+    height: 40px;
+  }
+  .nav-menu {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    margin-top: 0;
+    width: 100%;
+    justify-content: space-around;
+    background-color: transparent;
+    border: solid 1px red;
+    gap: 0.55rem;
+    padding-left: 0;
+  }
+
+  .nav-menu li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}

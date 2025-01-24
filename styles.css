@@ -342,10 +342,11 @@ header * {
     top: 50%;
     width: 60px;
     height: 60px;
-    padding: 2px;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    border:none;
   }
 
   .product-image-button img {
@@ -493,7 +494,7 @@ header * {
     display: inline-block;
     width:fit-content;
     height:fit-content;
-    z-index: -9999;
+
     border-radius: 1rem;
     
     position: relative;
@@ -568,4 +569,10 @@ header * {
     max-width: 7rem;
   }
 
+}
+
+
+product-thumbnail-button:hover{
+  filter:brightness(0);
+  border:10px solid red;
 }

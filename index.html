@@ -29,6 +29,7 @@
 </head>
 
 <body>
+  <div id="blackBox"></div>
   <div id="app">
     <header class="top-bar">
 
@@ -42,7 +43,7 @@
         <button class="nav-toggle" aria-expanded="false" aria-label="Open navigation">
           <img src="images/icon-menu.svg" alt="Toggle navigation"> </img>
         </button>
-        
+
         <div class="nav-menu">
           <button class="nav-menu-close" aria-label="Toggle navigation"><img src="images/icon-close.svg"></button>
           <ul class="nav-menu-list">
@@ -59,10 +60,28 @@
       <section class="product-images">
 
         <img class="product-image" src="images/image-product-1.jpg" alt="image1">
-        <button class="product-image-button" id="image-previous"><img src="images/icon-previous.svg"
-            alt="previous image"></img></button>
-        <button class="product-image-button" id="image-next"><img src="images/icon-next.svg"
-            alt="next image"></img></button>
+        <button class="product-image-button" id="image-previous">
+          <img src="images/icon-previous.svg" alt="previous image">
+        </button>
+        <button class="product-image-button" id="image-next">
+          <img src="images/icon-next.svg" alt="next image">
+        </button>
+        <!-- **carosel** -->
+        <section class="product-image-carosel">
+          <button class="product-thumbnail-button  product-thumbnail-active" id="product-thumbnail-1">
+            <img class="product-thumbnail" src="images/image-product-1-thumbnail.jpg">
+          </button>
+          <button class="product-thumbnail-button" id="product-thumbnail-2">
+            <img class="product-thumbnail" src="images/image-product-2-thumbnail.jpg">
+          </button>
+          <button class="product-thumbnail-button" id="product-thumbnail-3">
+            <img class="product-thumbnail" src="images/image-product-3-thumbnail.jpg">
+          </button>
+          <button class="product-thumbnail-button" id="product-thumbnail-4">
+            <img class="product-thumbnail" src="images/image-product-4-thumbnail.jpg">
+          </button>
+        </section>
+
       </section>
       <section class="product-text">
 
@@ -81,11 +100,15 @@
         </section>
         <section class="order-controls">
           <div class="order-controls-amounts">
-            <button  class="order-controls-button" id="order-controls-minus"><img src="./images/icon-minus.svg" alt="-"></button>
+            <button class="order-controls-button" id="order-controls-minus"><img src="./images/icon-minus.svg"
+                alt="-"></button>
             <div id="order-controls-quantity">0</div>
-            <button  class="order-controls-button" id="order-controls-plus"><img src="./images/icon-plus.svg" alt="+"></button>
+            <button class="order-controls-button" id="order-controls-plus"><img src="./images/icon-plus.svg"
+                alt="+"></button>
           </div>
-          <button id="order-controls-addtoCart"><img src="images/icon-cart button.svg"><div>Add to cart</div></button>
+          <button class="order-controls-addtoCart" id="order-controls-addtoCart"><img src="images/icon-cart button.svg">
+            <div>Add to cart</div>
+          </button>
         </section>
       </section>
     </main>
@@ -100,6 +123,7 @@
       <br>Coded by <a href="#">Chris Chapman aka MasterOfFluff</a>.
     </div>
   </footer>
+  
 </body>
 
 </html>

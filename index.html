@@ -23,14 +23,18 @@
     }
   </style>
 
-
-  <script src="./js/app.js" type="module" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+  <script src="./js/data.js" defer></script>
+  <script src="./js/lightbox.js" defer></script>
+  <script src="./js/app.js"  defer></script>
 
 </head>
 
 <body>
-  <div id="blackBox"></div>
+  
+
   <div id="app">
+    <div class="black-screen" v-show="activateBlackBox"></div>
     <header class="top-bar">
 
       <img class="logo" src="images/logo.svg" type="svg" alt="Sneakers logo">
@@ -57,30 +61,41 @@
       </nav>
     </header>
     <main>
-      <section class="product-images">
+      <!-- ** product images ** -->
+      <!-- <section class="product-images"> -->
 
-        <img class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
-        <button class="product-image-button" id="image-previous">
-          <img src="images/icon-previous.svg" alt="previous image" @click="imagePrev">
-        </button>
-        <button class="product-image-button" id="image-next" @click="imageNext">
-          <img src="images/icon-next.svg" alt="next image">
-        </button>
-
+        <!-- <img class="product-image" :src="mainImageUrl" :alt="mainImageUrl"> -->
+        <!-- <button class="product-image-button" id="image-previous"> -->
+          <!-- <img src="images/icon-previous.svg" alt="previous image" @click="imagePrev"> -->
+        <!-- </button> -->
+        <!-- <button class="product-image-button" id="image-next" @click="imageNext"> -->
+          <!-- <img src="images/icon-next.svg" alt="next image"> -->
+        <!-- </button> -->
+<!--  -->
 
         <!-- **carosel** -->
-        <section class="product-image-carosel">
-          <button 
-            v-for="(thumbnail, index) in thumbNails" 
-            :key = "index"
-            v-bind:class="['product-thumbnail-button', {'product-thumbnail-active': activeImageNo === index}]"
-            :value="index" 
-            @click="activateImage"> 
-            <img class="product-thumbnail" alt="product thumbnail" :src="thumbnail" > 
-          </button>
-        </section>
-        
+        <!-- <section class="product-image-carosel"> -->
+          <!-- <button  -->
+            <!-- v-for="(thumbnail, index) in thumbNails"  -->
+            <!-- :key = "index" -->
+            <!--  v-bind:class="['product-thumbnail-button', {'product-thumbnail-active': activeImageNo === index}]" -->
+            <!-- :value="index"  -->
+            <!-- @click="activateImage">  -->
+            <!-- <img class="product-thumbnail" alt="product thumbnail" :src="thumbnail" >  --> 
+          <!-- </button> -->
+        <!-- </section> -->
+      <!-- </section> -->
+      <section class="product-images">
+        <lightbox
+        :main-image-url="mainImageUrl"
+        :thumb-nails="thumbNails"
+        :active-image-no="activeImageNo"
+        :activate-image="activateImage"
+        :image-prev="imagePrev"
+        :image-next="imageNext">
+      </lightbox>
       </section>
+
 
       <!-- ** product text section **  -->
       <section class="product-text">
@@ -112,17 +127,18 @@
         </section>
       </section>
     </main>
+    <footer>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        <br>Coded by <a href="#">Chris Chapman aka MasterOfFluff</a>.
+      </div>
+    </footer>
   </div>
 
 
 
 
-  <footer>
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      <br>Coded by <a href="#">Chris Chapman aka MasterOfFluff</a>.
-    </div>
-  </footer>
+
   
 </body>
 

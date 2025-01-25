@@ -1,6 +1,7 @@
-import Vue from 'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.esm.browser.js';
+// import Vue from 'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.esm.browser.js';
 
-import {shoes} from './data.js';
+// import {shoes} from './data.js';
+// import Lightbox from './lightbox.js';
 
 
 
@@ -12,6 +13,8 @@ const app = new Vue({
     amount:0,
     cart:new Map(),
     activeImageNo:0,
+    isLightboxVisible:false,
+    activateBlackBox: false,
   },
   computed:{
     mainImageUrl: function() {return "/images/" + this.product.images[this.activeImageNo].main},
@@ -48,6 +51,9 @@ const app = new Vue({
       console.log(e.currentTarget)
       this.activeImageNo = parseInt(e.currentTarget.value, 10)||0;
       console.log(`Active image set to: ${this.activeImageNo}`);
+    },
+    toggleLightbox:function(value){
+      this.isLightboxVisible = value
     }
 
   }

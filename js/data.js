@@ -1,4 +1,4 @@
-export const shoes = [
+const shoes = [
   {
     sku: 0,
     manufacturer: "Sneaker Company",

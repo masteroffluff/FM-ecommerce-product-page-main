@@ -12,19 +12,19 @@ export const shoes = [
     images: [
       {
         main: "image-product-1.jpg",
-        thumb: "image-product-1-thumbnail",
+        thumb: "image-product-1-thumbnail.jpg",
       },
       {
         main: "image-product-2.jpg",
-        thumb: "image-product-2-thumbnail",
+        thumb: "image-product-2-thumbnail.jpg",
       },
       {
         main: "image-product-3.jpg",
-        thumb: "image-product-3-thumbnail",
+        thumb: "image-product-3-thumbnail.jpg",
       },
       {
         main: "image-product-4.jpg",
-        thumb: "image-product-4-thumbnail",
+        thumb: "image-product-4-thumbnail.jpg",
       },
     ],
   },

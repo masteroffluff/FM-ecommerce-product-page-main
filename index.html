@@ -66,23 +66,23 @@
         <button class="product-image-button" id="image-next" @click="imageNext">
           <img src="images/icon-next.svg" alt="next image">
         </button>
+
+
         <!-- **carosel** -->
         <section class="product-image-carosel">
-          <button class="product-thumbnail-button  product-thumbnail-active" id="product-thumbnail-1" value="0" @click="activateImage"> 
-            <img class="product-thumbnail" src="images/image-product-1-thumbnail.jpg"> 
-          </button>
-          <button class="product-thumbnail-button" id="product-thumbnail-2"  value="1" v-on:click="activateImage">
-            <img class="product-thumbnail" src="images/image-product-2-thumbnail.jpg">
-          </button>
-          <button class="product-thumbnail-button" id="product-thumbnail-3"  value="2" v-on:click="activateImage">
-            <img class="product-thumbnail" src="images/image-product-3-thumbnail.jpg">
-          </button>
-          <button class="product-thumbnail-button" id="product-thumbnail-4"  value="3" v-on:click="activateImage">
-            <img class="product-thumbnail" src="images/image-product-4-thumbnail.jpg">
+          <button 
+            v-for="(thumbnail, index) in thumbNails" 
+            :key = "index"
+            v-bind:class="['product-thumbnail-button', {'product-thumbnail-active': activeImageNo === index}]"
+            :value="index" 
+            @click="activateImage"> 
+            <img class="product-thumbnail" alt="product thumbnail" :src="thumbnail" > 
           </button>
         </section>
-
+        
       </section>
+
+      <!-- ** product text section **  -->
       <section class="product-text">
 
         <section class="product-description">

@@ -12,10 +12,11 @@ const app = new Vue({
     amount:0,
     cart:new Map(),
     activeImageNo:0,
-    thumbnailClass:"product-thumbnail"
   },
   computed:{
-    mainImageUrl: function() {return "/images/" + this.product.images[this.activeImageNo].main}
+    mainImageUrl: function() {return "/images/" + this.product.images[this.activeImageNo].main},
+    thumbNails: function() {
+      return this.product.images.map((e)=>"/images/" + e.thumb)}
   },
   methods:{
     orderPlus:function(){

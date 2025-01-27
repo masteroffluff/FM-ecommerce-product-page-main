@@ -1,3 +1,5 @@
+Vue.config.devtools = true;
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -64,11 +66,13 @@ const app = new Vue({
       this.activeImageNo = parseInt(number, 10)||0;
       
     },
-    toggleLightbox:function(value){
-      this.isLightboxVisible = value
+    toggleLightbox(value){
+      console.log("toggle lightbox", value)
+      this.isLightboxVisible = value;
+      this.activateBlackBox = value;
     },
     toggleCart:function(){
-      this.isCartVisible = !this.isCartVisible
+      this.isCartVisible = !this.isCartVisible;
     },
     menuShow:function(){
       console.log("menuShow")
@@ -80,6 +84,12 @@ const app = new Vue({
       this.activateBlackBox = false;
     }
 
+  },
+  mounted() {
+    // Global listener to catch all toggle-lightbox events
+    this.$root.$on("toggle-lightbox", (state) => {
+      console.log("Global listener caught toggle-lightbox with state:", state);
+    })
   }
 });
 

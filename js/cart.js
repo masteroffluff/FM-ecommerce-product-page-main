@@ -40,7 +40,7 @@ const Cart = Vue.component("cart", {
     },
     removeItem: function (item) {
 
-      console.log("sending delete")  
+
       this.$emit("delete-item", item);
     },
   },

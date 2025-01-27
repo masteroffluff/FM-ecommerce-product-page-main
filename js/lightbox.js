@@ -27,17 +27,37 @@ const Lightbox = Vue.component("lightbox", {
     fullScreen: {
       type: Boolean,
       required: true,
-    }
+    },
+  },
+  methods: {
+    closeLightbox() {
+      console.log("close")
+      this.$emit("toggle-lightbox", false);
+    },
+    openLightbox() {
+
+      if (!this.fullScreen) {
+        console.log("openLightbox")
+        this.$emit("toggle-lightbox", true);
+      }
+    },
   },
 
   template: `
     <section  v-bind:class="['product-images', {'product-images-fullscreen': fullScreen}]">
-    <div v-if="fullScreen" class="product-images-close"><button>X</button></div>
-    <img class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
-    <button v-show="fullScreen" class="product-image-button" id="image-previous" @click="imagePrev">
+    <div v-if="fullScreen" class="product-images-close">
+      <button @click="closeLightbox">X</button>
+    </div>
+    <img @dblclick="openLightbox" class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
+    <button 
+      v-bind:class="['product-image-button', {'image-previous':!fullScreen},{'image-previous-fullscreen':fullScreen}, {'force-show': fullScreen}]" 
+      @click="imagePrev">
       <img src="images/icon-previous.svg" alt="previous image" >
     </button>
-    <button v-show="fullScreen" class="product-image-button" id="image-next" @click="imageNext">
+    <button 
+      v-bind:class="['product-image-button', {'image-next':!fullScreen},{'image-next-fullscreen':fullScreen}, {'force-show': fullScreen}]" 
+      @click="imageNext"
+      >
       <img src="images/icon-next.svg" alt="next image">
     </button>
 

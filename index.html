@@ -65,14 +65,16 @@
 
     <main>
       <lightbox
-      v-if="true"
+      v-if="isLightboxVisible"
       :full-screen = "true"
       :main-image-url="mainImageUrl"
       :thumb-nails="thumbNails"
       :active-image-no="activeImageNo"
       :activate-image="activateImage"
       :image-prev="imagePrev"
-      :image-next="imageNext">
+      :image-next="imageNext"
+      @toggle-lightbox="toggleLightbox"
+
       >
 
       </lightbox>
@@ -84,7 +86,9 @@
         :active-image-no="activeImageNo"
         :activate-image="activateImage"
         :image-prev="imagePrev"
-        :image-next="imageNext">
+        :image-next="imageNext"
+        @toggle-lightbox="toggleLightbox"
+        >
       </lightbox>
       </section>
 

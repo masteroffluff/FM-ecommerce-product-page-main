@@ -26,7 +26,10 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
   <script src="./js/data.js" defer></script>
   <script src="./js/lightbox.js" defer></script>
+  <script src="./js/menu.js" defer></script>
+  <script src="./js/cart.js" defer></script>
   <script src="./js/app.js"  defer></script>
+
 
 </head>
 
@@ -35,56 +38,32 @@
 
   <div id="app">
     <div class="black-screen" v-show="activateBlackBox"></div>
-    <header class="top-bar">
+    <header>
+      <div class="top-bar">
+        <img class="logo" src="images/logo.svg" type="svg" alt="Sneakers logo">
+        <button @click="toggleCart" class="top-image basket-button" id="basket"> <img src="images/icon-cart.svg" alt="basket"></button>
+        <img class="top-image avatar" :src="avatar" alt="your avatar">
+        <nav>
+          <button class="nav-toggle" aria-label="Open navigation" @click="menuShow">
+            <img @click="menuShow" src="images/icon-menu.svg" alt="Toggle navigation"> </img>
+          </button>
+          <nav-menu
+            v-show="isMenuVisible"
+            :close="menuClose"
+          >
+          </nav-menu>
+        </nav>
 
-      <img class="logo" src="images/logo.svg" type="svg" alt="Sneakers logo">
-
-      <button class="top-image basket-button" id="basket"> <img src="images/icon-cart.svg" alt="basket"> </button>
-      <img class="top-image avatar" :src="avatar" alt="your avatar">
-
-
-      <nav>
-        <button class="nav-toggle" aria-label="Open navigation">
-          <img src="images/icon-menu.svg" alt="Toggle navigation"> </img>
-        </button>
-
-        <div class="nav-menu">
-          <button class="nav-menu-close" aria-label="Toggle navigation"><img src="images/icon-close.svg"></button>
-          <ul class="nav-menu-list">
-            <li><a href="">Collections</a></li>
-            <li><a href="">Men</a></li>
-            <li><a href="">Women</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
+      </div>
+      <cart
+      v-if="isCartVisible"
+      :cart="cart"
+      :update-flag="updateFlag"
+      @delete-item="handleDeleteItem"
+    ></cart>
     </header>
+
     <main>
-      <!-- ** product images ** -->
-      <!-- <section class="product-images"> -->
-
-        <!-- <img class="product-image" :src="mainImageUrl" :alt="mainImageUrl"> -->
-        <!-- <button class="product-image-button" id="image-previous"> -->
-          <!-- <img src="images/icon-previous.svg" alt="previous image" @click="imagePrev"> -->
-        <!-- </button> -->
-        <!-- <button class="product-image-button" id="image-next" @click="imageNext"> -->
-          <!-- <img src="images/icon-next.svg" alt="next image"> -->
-        <!-- </button> -->
-<!--  -->
-
-        <!-- **carosel** -->
-        <!-- <section class="product-image-carosel"> -->
-          <!-- <button  -->
-            <!-- v-for="(thumbnail, index) in thumbNails"  -->
-            <!-- :key = "index" -->
-            <!--  v-bind:class="['product-thumbnail-button', {'product-thumbnail-active': activeImageNo === index}]" -->
-            <!-- :value="index"  -->
-            <!-- @click="activateImage">  -->
-            <!-- <img class="product-thumbnail" alt="product thumbnail" :src="thumbnail" >  --> 
-          <!-- </button> -->
-        <!-- </section> -->
-      <!-- </section> -->
       <section class="product-images">
         <lightbox
         :main-image-url="mainImageUrl"
@@ -121,7 +100,7 @@
             <button v-on:click="orderPlus" class="order-controls-button" id="order-controls-plus"><img src="./images/icon-plus.svg"
                 alt="+"></button>
           </div>
-          <button class="order-controls-addtoCart" id="order-controls-addtoCart"><img src="images/icon-cart button.svg">
+          <button class="order-controls-addtoCart" id="order-controls-addtoCart" @click="addToCart"><img src="images/icon-cart button.svg">
             <div>Add to cart</div>
           </button>
         </section>

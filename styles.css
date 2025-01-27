@@ -6,6 +6,7 @@
   --grayish-blue: hsl(220, 14%, 75%);
   --light-grayish-blue: hsl(223, 64%, 98%);
   --black75: hsla(0, 0%, 0%, 75%);
+  --shadow: hsla(0, 0%, 0%, 50%);
   --white: white;
   font-size: 16px;
   font-family: "Kumbh Sans", serif;
@@ -26,6 +27,7 @@ h1 {
 }
 a {
   text-decoration: none;
+  color:var(--dark-grayish-blue)
 }
 a:visited {
   color: inherit;
@@ -47,7 +49,9 @@ button:active,
 button:focus {
   all: unset;
 } */
-
+header {
+  position:relative;
+}
 .top-bar {
   display: grid;
   grid-template-columns: MIN-CONTENT 1fr 40px 40px;
@@ -62,7 +66,7 @@ button:focus {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-header * {
+.top-bar * {
   height: 20px;
 }
 
@@ -85,16 +89,64 @@ header * {
   grid-area: basket-button;
   order: 3;
 }
+.cart {
+  position:fixed;
+  top:3rem;
+  right:1rem;
+  height: fit-content;
+  border-radius: 0.5rem;
+  z-index:999999;
+  padding:1rem;
+  background-color: var(--white);
+  
+  box-shadow: 0 0.5rem 0.5rem var(--shadow);
+}
+.cart h3{
+  color: var(--very-dark-blue);
+  font-size: 1rem;
+  padding:0;
+  
+}
+.empty-cart {
+  width:20rem;
+}
+.cart-list {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+}
+.cart-thumbnail{
+  height: 4rem;
+}
+.cart-delete{
+  height: 1rem;
+}
+.cart-items {
+  line-height: 0.5rem;
+  margin: 0.5rem
+}
+
+
+
 .avatar {
   grid-area: avatar;
   order: 4;
   justify-content: end;
 }
+.black-screen{
+  position: fixed;
+  width: 100%;
+  height:100%;
+  background-color: var(--black75);
 
+  cursor: default;
+  z-index: 99;
+  top:0;
+  left:0;
+}
 .nav-menu {
-  display: none;
-  /* display: flex;  */
-  flex-direction:column;
+  /* display: none; */
+  display: block; 
   position: fixed;
   background-color: var(--white);
   
@@ -108,17 +160,7 @@ header * {
   font-weight: 700;
   gap: 1rem;
 }
-.black-screen{
-  position: fixed;
-  width: 100%;
-  height:100%;
-  background-color: var(--black75);
 
-  cursor: default;
-  z-index: 99;
-  top:0;
-  left:0;
-}
 .nav-menu-list{
   display: flex;
   flex-direction:column;
@@ -132,7 +174,8 @@ header * {
   margin: 0 0.5rem;
   height: 1rem !important;
 }
-.nav-menu li:hover{
+
+.nav-menu li a:hover{
   color: var(--orange);
   /* background-color: var(--orange); */
 }
@@ -284,6 +327,7 @@ header * {
 
 
 
+
 @media (max-width: 999px) and (min-width: 500px) {
   :root{
     font-size: 24px;
@@ -298,7 +342,7 @@ header * {
     width: 100%; /* Full width */
     padding: 0 1rem; /* Replace margin with padding */
   }
-  header * {
+  .top-bar * {
     height: 40px;
   }
 
@@ -314,6 +358,7 @@ header * {
     height: 40px;
   }
   .basket-button {
+    position: relative;
     grid-area: basket-button;
     display: flex;
     justify-content: end;
@@ -393,12 +438,14 @@ header * {
   h1 {
     font-size: 2.5rem;
   }
-  header *{
+  .top-bar *{
+    position:relative;
     height: 2rem;
     /* width: max-content; */
   }
   .top-bar {
     /* width: 100vw; */
+    position: relative;
     all:unset;
     width:100%;
     display: inline-grid;
@@ -410,6 +457,12 @@ header * {
     padding-bottom:2em;
     border-bottom: solid 2px var(--light-grayish-blue);
     margin-bottom:1rem;
+
+  }
+  .cart {
+    position:absolute;
+    right:2rem;
+    top: 4rem;
   }
   nav {
     display: flex;
@@ -455,6 +508,7 @@ header * {
     display: none;
   }
   .basket-button{
+    position: relative;
     height: 1.5rem;
   }
   .nav-menu li {
@@ -484,6 +538,8 @@ header * {
     flex-direction: column;
     align-items: center;
     height:fit-content;
+    max-height: 80vh;
+    border: 1px red solid;
   }
   .product-image-button{
     display: none;
@@ -593,3 +649,8 @@ header * {
 }
 
 
+.cart-button{
+  height:2rem ;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+}

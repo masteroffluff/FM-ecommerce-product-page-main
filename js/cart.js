@@ -8,11 +8,17 @@ const Cart = Vue.component("cart", {
       type: [Number, String],
       required: true,
     },
+    
   },
   data() {
     return {
-      isEmpty: true,
-      iterableCart: [],
+      isEmpty: !this.cart.size,
+      iterableCart: this.iterableCart = [...this.cart].map(([item, amount]) => {
+        const { productName, currentRP, images } = item;
+        const thumbnail = "/images/" + images[0].thumb;
+        const subTotal = currentRP * amount;
+        return { item, productName, currentRP, amount, subTotal, thumbnail };
+      })
     };
   },
   watch: {

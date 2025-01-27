@@ -24,16 +24,20 @@ const Lightbox = Vue.component("lightbox", {
       type: Function,
       required: true,
     },
+    fullScreen: {
+      type: Boolean,
+      required: true,
+    }
   },
 
   template: `
-    <section class="product-images">
-
+    <section  v-bind:class="['product-images', {'product-images-fullscreen': fullScreen}]">
+    <div v-if="fullScreen" class="product-images-close"><button>X</button></div>
     <img class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
-    <button class="product-image-button" id="image-previous" @click="imagePrev">
+    <button v-show="fullScreen" class="product-image-button" id="image-previous" @click="imagePrev">
       <img src="images/icon-previous.svg" alt="previous image" >
     </button>
-    <button class="product-image-button" id="image-next" @click="imageNext">
+    <button v-show="fullScreen" class="product-image-button" id="image-next" @click="imageNext">
       <img src="images/icon-next.svg" alt="next image">
     </button>
 

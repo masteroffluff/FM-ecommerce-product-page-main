@@ -48,7 +48,7 @@ const Lightbox = Vue.component("lightbox", {
     <div v-if="fullScreen" class="product-images-close">
       <button @click="closeLightbox">X</button>
     </div>
-    <img @dblclick="openLightbox" class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
+    <img @click="openLightbox" class="product-image" :src="mainImageUrl" :alt="mainImageUrl">
     <button 
       v-bind:class="['product-image-button', {'image-previous':!fullScreen},{'image-previous-fullscreen':fullScreen}, {'force-show': fullScreen}]" 
       @click="imagePrev">

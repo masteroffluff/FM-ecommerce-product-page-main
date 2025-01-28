@@ -15,9 +15,9 @@ const app = new Vue({
     updateFlag:0
   },
   computed:{
-    mainImageUrl: function() {return "/images/" + this.product.images[this.activeImageNo].main},
+    mainImageUrl: function() {return "./images/" + this.product.images[this.activeImageNo].main},
     thumbNails: function() {
-      return this.product.images.map((e)=>"/images/" + e.thumb)}
+      return this.product.images.map((e)=>"./images/" + e.thumb)}
   },
   methods:{
     orderPlus:function(){

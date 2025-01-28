@@ -63,7 +63,7 @@ const Lightbox = Vue.component("lightbox", {
 
 
     <!-- **carosel** -->
-    <section class="product-image-carosel">
+    <section class="product-image-carosel" v-bind:class="{'force-show': fullScreen}">
       <button 
         v-for="(thumbnail, index) in thumbNails" 
         :key = "index"
